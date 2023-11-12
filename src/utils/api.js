@@ -4,7 +4,7 @@ import { LOGOUT } from '../redux/actions/types';
 import store from '../redux/store';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: 'https://swinxter.onrender.com/api',
   withCredentials:true
 });
 
