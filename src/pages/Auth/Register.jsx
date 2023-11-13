@@ -20,7 +20,7 @@ const Signup = () => {
   const [formErrors, setformErrors] = useState({});
   const [captcha, setCaptcha] = useState();
   const navigate = useNavigate();
-  const Captcha_Key = process.env.REACT_APP_CAPTCHA_KEY;
+  const Captcha_Key = "6LfLOA0pAAAAAOuvWY5JM-H73TuhXK4AJIvUoGqy";
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const handleChange = (e) => {
     const { name, value } = e.target;
