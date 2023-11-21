@@ -21,6 +21,7 @@ const MenuItem = ({
   path,
   activeMenuItem,
   setActiveMenuItem,
+  externalPath
 }) => {
   const [showSubmenu, setShowSubmenu] = useState(false);
   const location = useLocation();
@@ -48,6 +49,10 @@ const MenuItem = ({
     if (path) {
       setActiveMenuItem(title);
       navigate(path);
+    }
+    if (externalPath){
+      window.open(externalPath, '_blank');
+
     }
   };
 
@@ -142,10 +147,11 @@ const Sidebar = () => {
         {
           title: "Who Viewed Me",
           submenus: [],
+          path: "/visited-users"
         },
         { title: "New Members", submenus: [],path:"/recentuser" },
-        { title: "Near Members", submenus: [] },
-        { title: "Who Is On", submenus: [] ,path:"/currentuser"},
+        { title: "Near Members", submenus: [],path:"/nearusers" },
+        { title: "Who Is On", submenus: [] ,path:"/onlineusers"},
       ],
     },
     {
@@ -178,6 +184,7 @@ const Sidebar = () => {
     {
       title: "Shop",
       submenus: [],
+      externalPath: "http://swinxterrooms.com/"
     },
     {
       title: "Situationship",
@@ -284,6 +291,7 @@ navigate("/login")}).catch((err)=>console.log(err))
                 title={menuItem.title}
                 path={menuItem.path}
                 submenus={menuItem.submenus}
+                externalPath={menuItem.externalPath?menuItem.externalPath:null}
               />
             ))}
             <li>

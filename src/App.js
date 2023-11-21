@@ -28,6 +28,10 @@ import { loadUser } from './redux/actions/auth';
 import { LOGOUT } from './redux/actions/types';
 import store from './redux/store';
 import setAuthToken from './utils/setAuthToken';
+import VisitedUser from './pages/VisitedUser';
+import RecentUser from './pages/RecentUser';
+import NearUsers from './pages/NearUsers';
+import OnlineUers from './pages/OnlineUers';
 function App() {
 const {isAuthenticated} = useSelector((state)=>state.auth);
 let location = useLocation();
@@ -75,6 +79,7 @@ if(isAuthenticated){
 <Route path="/edit-detail" element={<Layout><ProtectedRoute><EditUserDetailsPage /></ProtectedRoute></Layout>} />
 <Route path="editcouple-detail" element={<Layout><ProtectedRoute><CoupleEditDetailPage/></ProtectedRoute></Layout>}/>
 
+
 <Route path='/' element={<Main_Layout/>}>
 
 {/* HOME */}
@@ -88,6 +93,10 @@ if(isAuthenticated){
 <Route path="/event-detail-media" element={<ProtectedRoute><EventDetailMedia /></ProtectedRoute>} />
 <Route path="/my-event" element={<ProtectedRoute><Myevents/></ProtectedRoute>} />
 <Route path="/event-participants" element={<ProtectedRoute><EventParticipants /></ProtectedRoute>} />
+<Route path="/visited-users" element={<ProtectedRoute>< VisitedUser/></ProtectedRoute>} />
+<Route path="/recentuser" element={<ProtectedRoute>< RecentUser/></ProtectedRoute>} />
+<Route path="/nearusers" element={<ProtectedRoute>< NearUsers/></ProtectedRoute>} />
+<Route path="/onlineusers" element={<ProtectedRoute><OnlineUers/></ProtectedRoute>} />
 
 </Route>
    </Routes>

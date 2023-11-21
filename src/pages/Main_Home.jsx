@@ -28,18 +28,17 @@ const Main_Home = () => {
   const getEvent = async () => {
     const { data } = await api.get(`/events?q=${searchquery}`);
     const allEvents = data.data;
+    console.log(allEvents);
     const verifyEvents = allEvents.filter((event) => event.isverify === true);
     setEvent(verifyEvents.reverse());
-
     verifyEvents.map((el)=> console.log(el?.location))
+};
 
-
-  };
- 
   useEffect(() => {
     getEvent();
   }, [searchquery]);
 
+  console.log(event);
 
   return (
     <div className="home_page bg-black py-8 px-6 rounded-2xl">
