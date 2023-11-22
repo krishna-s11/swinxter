@@ -32,6 +32,9 @@ import VisitedUser from './pages/VisitedUser';
 import RecentUser from './pages/RecentUser';
 import NearUsers from './pages/NearUsers';
 import OnlineUers from './pages/OnlineUers';
+import MyFriends from './pages/MyFriends';
+import SentRequest from './pages/SentRequest';
+import RecievedRequests from './pages/RecievedRequests';
 function App() {
 const {isAuthenticated} = useSelector((state)=>state.auth);
 let location = useLocation();
@@ -97,6 +100,9 @@ if(isAuthenticated){
 <Route path="/recentuser" element={<ProtectedRoute>< RecentUser/></ProtectedRoute>} />
 <Route path="/nearusers" element={<ProtectedRoute>< NearUsers/></ProtectedRoute>} />
 <Route path="/onlineusers" element={<ProtectedRoute><OnlineUers/></ProtectedRoute>} />
+<Route path="/my_friends" element={<ProtectedRoute><MyFriends/></ProtectedRoute>} />
+<Route path="/sent_request" element={<ProtectedRoute><SentRequest/></ProtectedRoute>} />
+<Route path="/recieved_request" element={<ProtectedRoute><RecievedRequests/></ProtectedRoute>} />
 
 </Route>
    </Routes>

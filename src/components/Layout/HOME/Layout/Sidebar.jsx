@@ -121,8 +121,8 @@ const Sidebar = () => {
           title: "Friends",
           submenus: [
             { title: "My Friends", submenus: [],path:"/my_friends"},
-            { title: "Sent", submenus: [],path:"/send_request" },
-            { title: "Received", submenus: [] ,path:"/received_request"},
+            { title: "Sent", submenus: [],path:"/sent_request" },
+            { title: "Received", submenus: [] ,path:"/recieved_request"},
           ],
         },
         {
