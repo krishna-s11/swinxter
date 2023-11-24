@@ -6,6 +6,7 @@
     border-radius: 10px;
     display: flex;
     margin-right: 20px;
+    cursor: pointer;
 }
 .user_photo{
     width: 40%;

@@ -1,9 +1,13 @@
 import React from 'react'
 import "./css/userCard.css"
+import { useNavigate } from "react-router-dom";
+
 
 const UserCard = ({userInfo}) => {
+  const navigate = useNavigate();
+  console.log(userInfo)
   return (
-    <div className="user_card" style={{marginRight: "20px"}}>
+    <div className="user_card" style={{marginRight: "20px"}} onClick={() => {navigate(`/user-detail?id=${userInfo._id}`)}}>
       <div className='user_photo'>
       {userInfo?.profile_type==="couple"?
         <img src={userInfo?.image?userInfo?.image:"/images/couple-avatar.jpg"}/>

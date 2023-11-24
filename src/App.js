@@ -78,7 +78,7 @@ if(isAuthenticated){
    <Route path="/forgot" element={<Layout><ForgotPassword/></Layout>} />
  
 {/* USER  */}
-<Route path="/user-detail" element={<Layout><ProtectedRoute><UserDetailPage /></ProtectedRoute></Layout>} />
+<Route path="/user-detail/" element={<Layout><ProtectedRoute><UserDetailPage /></ProtectedRoute></Layout>} />
 <Route path="/edit-detail" element={<Layout><ProtectedRoute><EditUserDetailsPage /></ProtectedRoute></Layout>} />
 <Route path="editcouple-detail" element={<Layout><ProtectedRoute><CoupleEditDetailPage/></ProtectedRoute></Layout>}/>
 

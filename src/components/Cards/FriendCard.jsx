@@ -6,7 +6,7 @@ const FriendCard = () => {
     <div className='friends_card'>
         <div className='friends_card_dp'>
         </div>
-        <h1>Shivv</h1>
+        <h1>Shivv</h1>  
     </div>
   )
 }
