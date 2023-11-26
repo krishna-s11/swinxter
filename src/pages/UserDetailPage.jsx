@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link,useLocation } from "react-router-dom";
+import { Link,useLocation,useNavigate } from "react-router-dom";
 import { calculateAge } from "../utils/CalculateAge";
 import CoupleDetailPage from "./CoupleDetailPage";
 import { useSelector } from "react-redux";
@@ -12,17 +12,24 @@ const UserDetailPage = () => {
   ((state)=>state.auth);
   const [userInfo,setUserInfo]=useState();  
   const location = useLocation();
+  const navigate = useNavigate();
+  const [sent,setSent] = useState(0);
 
   const getUser = async () =>{
     const id = location.search.split("=")[1]
-    console.log(id);
     const { data } = await api.get(`/user_details/${id}`);
     setUserInfo(data);
+    if(user.sent_requests.includes(data._id)){
+      setSent(1);
+    }
+    else{
+      setSent(0);
+    }
   }
 
   useEffect(()=>{
     if(location.search.length > 0){
-      getUser()
+      getUser();
     }
     else{
       setUserInfo(user) 
@@ -38,7 +45,32 @@ useEffect(() => {
     }
 }, []);
 
+const handleRemove = async () => {
+  try{
+    await api.put(`/remove_friend/${user?._id}/${userInfo?._id}`)
+    window.location.reload();
+    navigate("/my_friends");
+  }catch(e){
+    console.log(e);
+  }
+}
 
+const handleSendRequest = async () => {
+  try{
+    await api.put(`/send_request/${user?._id}/${userInfo?._id}`);
+    window.location.reload();
+  }catch(e){
+    console.log(e);
+  }
+}
+const handleCancelRequest = async () => {
+  try{
+    await api.put(`/cancel_request/${user?._id}/${userInfo?._id}`);
+    window.location.reload();
+  }catch(e){
+    console.log(e);
+  }
+}
 
 const RenderedStyle={
 "color":`${userInfo?.gender=== 'male'?'#3A97FE':userInfo?.gender=== 'female'?'#FF2A90':'#cf00cf'}`
@@ -73,7 +105,7 @@ const RenderedStyle={
          <div>
            <div className="flex flex-wrap sm:flex-nowrap justify-between sm:gap-5">
              <h3 className="flex items-center text-lg sm:text-[22px] font-bold gap-2 font-body_font">
-               {userInfo?.username}skdksj
+               {userInfo?.username}
                <p className="flex items-center text-sm font-light gap-1">
                  <span className="block w-3 h-3 rounded-full bg-green-500 font-body_font"></span>
                  Online
@@ -92,6 +124,42 @@ const RenderedStyle={
 
            </div>
          </div>
+         {
+          location.search.length > 0 ? 
+         <div className="grid justify-stretch gap-2 mt-3 event_card_button_wrap items-start" style={{width: "300px"}}>
+                {
+                  user.friends.includes(userInfo?._id)? <button
+                  className="primary_btn !py-1 !text-sm !leading-[28px] !px-1 w-full !text-[12px]"
+                  onClick={handleRemove}
+                >
+                  Remove Friend
+                </button>:
+                (sent === 1?
+                <button
+                  className="primary_btn !py-1 !text-sm !leading-[28px] !px-1 w-full !text-[12px]"
+                  onClick={handleCancelRequest}
+                >
+                  Cancel Friend Request
+                </button>:
+                (user.sent_requests.includes(userInfo?._id)?
+                <button
+                  className="primary_btn !py-1 !text-sm !leading-[28px] !px-1 w-full !text-[12px]"
+                  onClick={handleCancelRequest}
+                >
+                  Cancel Friend Request
+                </button>:<button
+                  className="primary_btn !py-1 !text-sm !leading-[28px] !px-1 w-full !text-[12px]"
+                  onClick={handleSendRequest}
+                >
+                  Send Friend Request
+                </button>))
+                }
+                <button
+                  className="primary_btn !py-1 !text-sm !leading-[28px] !px-1 w-full !text-[12px]"
+                >
+                  Message
+                </button>     
+          </div>:null}
        </div>
      </div>
    </div>
@@ -334,7 +402,7 @@ const RenderedStyle={
    </div>
  </div>
 </div>:
-<CoupleDetailPage age={age} age2={age2} userInfo={userInfo}/>
+<CoupleDetailPage age={age} age2={age2} userInfo={userInfo} handleRemove={handleRemove} handleSendRequest={handleSendRequest} handleCancelRequest={handleCancelRequest}/>
 }
    
     </>

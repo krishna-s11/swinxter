@@ -5,3 +5,6 @@
 svg{
   display: inline;
 }
+button {
+  cursor: pointer !important;
+}

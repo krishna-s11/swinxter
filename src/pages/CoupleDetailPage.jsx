@@ -4,7 +4,7 @@ import { Link, useNavigate,useLocation } from "react-router-dom";
 import { calculateAge } from "../utils/CalculateAge";
 
 
-const CoupleDetailPage = ({userInfo}) => {
+const CoupleDetailPage = ({userInfo,handleRemove,handleSendRequest,handleCancelRequest}) => {
 const location = useLocation();
 const [age, setAge] = useState("");
   const [age2,setage2]=useState("")
@@ -37,11 +37,10 @@ const {user} = useSelector((state)=>state.auth);
     setAge(calculateAge(userInfo?.couple?.person1.DOB));
       setage2(calculateAge(userInfo?.couple?.person2.DOB));
   })
- 
+
   return (
     <div className="bg-black-20">
       <div className="min-h-[130px] md:min-h-[130px] flex justify-center items-end bg-black rounded-b-50px">
-     
       </div>
       <div className="pt-10 container px-5 mx-auto">
         <div className="flex flex-wrap items-stretch bg-black rounded-2xl max-w-5xl mx-auto">
@@ -99,6 +98,32 @@ const {user} = useSelector((state)=>state.auth);
 <span style={RenderStyle2}>{age2}</span>
                  
                 </div>
+              </div>
+              <div className="grid justify-stretch gap-2 mt-3 event_card_button_wrap items-start" style={{width: "300px"}}>
+              {
+                  user.friends.includes(userInfo?._id)? <button
+                  className="primary_btn !py-1 !text-sm !leading-[28px] !px-1 w-full !text-[12px]"
+                  onClick={handleRemove}
+                >
+                  Remove Friend
+                </button>:(user.sent_requests.includes(userInfo?._id)?
+                <button
+                  className="primary_btn !py-1 !text-sm !leading-[28px] !px-1 w-full !text-[12px]"
+                  onClick={handleCancelRequest}
+                >
+                  Cancel Friend Request
+                </button>:<button
+                  className="primary_btn !py-1 !text-sm !leading-[28px] !px-1 w-full !text-[12px]"
+                  onClick={handleSendRequest}
+                >
+                  Send Friend Request
+                </button>
+                )}
+                <button
+                  className="primary_btn !py-1 !text-sm !leading-[28px] !px-1 w-full !text-[12px]"
+                >
+                  Message
+                </button>     
               </div>
               {/* <p className="text-lg font-body_font">{userInfo?.slogan}</p>
               <p className="text-lg font-body_font">{userInfo?.introduction}</p> */}

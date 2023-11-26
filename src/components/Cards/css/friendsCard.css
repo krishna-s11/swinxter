@@ -1,13 +1,14 @@
 .friends_card{
     width: 250px;
-    height: 170px;
+    height: 160px;
     border-radius: 10px;
     background-color: #2A2D37;
     position: relative;
+    margin-right: 20px;
 }
 .friends_card_dp{
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     position: absolute;
     left: 50%;

@@ -8,23 +8,18 @@ const MyFriends = () => {
     const [users,setUsers] = useState([]);
     const {user} = useSelector((state)=>state.auth);
     const [userInfo,setUserInfo]=useState(user);
+    const [friends,setFriends] = useState([]);
 
-    const getRecentUsers = async () => {
-        let userArr = [];
-        const { data } = await api.get(`/recentusers`);
-        data.map(d => {
-            if(d._id !== userInfo._id){
-                userArr.push(d);
-            }
+    const getFriends = async () => {
+        userInfo.friends.map(async ele => {
+          const { data } = await api.get(`/user_details/${ele}`);
+          setFriends([...friends,data])
         })
-        setUsers(userArr);
     }
 
     useEffect(() => {
-        getRecentUsers();
+      getFriends()
     },[])
-
-    console.log(users);
 
   return (
     <div className="home_page bg-black py-8 px-6 rounded-2xl">
@@ -38,8 +33,15 @@ const MyFriends = () => {
           </Link> */}
         </div>
         <div style={{display: "flex", flexWrap: "wrap",marginTop: "50px"}}>
-          {/* <FriendCard /> */}
-          <p>No friends yet</p>
+          {
+            friends.length > 0 ?
+          (
+            friends?.map((friend,i) => {
+              return(
+                <FriendCard data={friend} key={i}/>
+              )
+            })
+          ):<p>No friends yet !</p>}
         </div>
       </div>
   </div>
