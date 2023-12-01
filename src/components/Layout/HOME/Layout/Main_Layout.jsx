@@ -36,7 +36,7 @@ const Main_Layout = () => {
   }, [pathname]);
   return (
     <div className="main_dashboard_wrapper bg-black-20 text-white grid content-between min-h-screen">
-      {/* <div>
+      <div>
         <DbHeader />
         <div className="dashboard_body_wrap">
         <div className="dashboard_body flex flex-wrap items-stretch min-h-screen mt-5">
@@ -76,7 +76,7 @@ const Main_Layout = () => {
           </div>
         </div>
         <Footer />
-      </div> */}
+      </div>
     </div>
   );
 };
