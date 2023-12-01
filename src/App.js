@@ -35,6 +35,7 @@ import OnlineUers from './pages/OnlineUers';
 import MyFriends from './pages/MyFriends';
 import SentRequest from './pages/SentRequest';
 import RecievedRequests from './pages/RecievedRequests';
+import Message from './pages/Message';
 function App() {
 const {isAuthenticated} = useSelector((state)=>state.auth);
 let location = useLocation();
@@ -83,10 +84,10 @@ if(isAuthenticated){
 <Route path="editcouple-detail" element={<Layout><ProtectedRoute><CoupleEditDetailPage/></ProtectedRoute></Layout>}/>
 
 
-<Route path='/' element={<Main_Layout/>}>
+{/* <Route path='/' element={<Main_Layout/>}> */}
 
 {/* HOME */}
-<Route path='/home' element={<ProtectedRoute><Main_Home/></ProtectedRoute>} />
+{/* <Route path='/home' element={<ProtectedRoute><Main_Home/></ProtectedRoute>} /> */}
 
 {/* EVENTS */}
 <Route path="/event-page" element={<ProtectedRoute><EventPage /></ProtectedRoute>} />
@@ -103,6 +104,7 @@ if(isAuthenticated){
 <Route path="/my_friends" element={<ProtectedRoute><MyFriends/></ProtectedRoute>} />
 <Route path="/sent_request" element={<ProtectedRoute><SentRequest/></ProtectedRoute>} />
 <Route path="/recieved_request" element={<ProtectedRoute><RecievedRequests/></ProtectedRoute>} />
+<Route path="/message" element={<ProtectedRoute><Message/></ProtectedRoute>} />
 
 </Route>
    </Routes>

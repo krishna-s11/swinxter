@@ -26,6 +26,7 @@ module.exports = {
         "red-color": "#F94A2B",
         "light-yellow": "#FAD97F",
         "green-color": "#02951b",
+        "menu-gray": "#262626",
       },
       minHeight: {
         832: "832px",
@@ -34,12 +35,14 @@ module.exports = {
         40: "40px",
         502: "502px",
         "500px": "500px",
+        700: "700px",
       },
       width: {
         "500px": "500px",
         132: "132px",
         30: "30%",
         502: "502px",
+        400: "400px"
       },
       maxWidth: {
         "100px": "100px",

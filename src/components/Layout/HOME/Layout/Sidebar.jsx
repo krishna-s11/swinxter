@@ -113,7 +113,7 @@ const Sidebar = () => {
         {
           title: "Messages",
           submenus: [
-            { title: "Inbox", submenus: [] },
+            { title: "Inbox", submenus: [], path:"/message" },
             { title: "Sent", submenus: [] },
           ],
         },

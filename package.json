@@ -27,6 +27,9 @@
     "redux": "^4.2.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.2",
+    "stream-chat": "^8.14.3",
+    "stream-chat-react": "^11.0.0",
+    "universal-cookie": "^6.1.1",
     "uuid": "^9.0.1",
     "web-vitals": "^2.1.4"
   },
