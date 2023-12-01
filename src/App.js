@@ -84,10 +84,10 @@ if(isAuthenticated){
 <Route path="editcouple-detail" element={<Layout><ProtectedRoute><CoupleEditDetailPage/></ProtectedRoute></Layout>}/>
 
 
-{/* <Route path='/' element={<Main_Layout/>}> */}
+<Route path='/' element={<Main_Layout/>}>
 
 {/* HOME */}
-{/* <Route path='/home' element={<ProtectedRoute><Main_Home/></ProtectedRoute>} /> */}
+<Route path='/home' element={<ProtectedRoute><Main_Home/></ProtectedRoute>} />
 
 {/* EVENTS */}
 <Route path="/event-page" element={<ProtectedRoute><EventPage /></ProtectedRoute>} />
